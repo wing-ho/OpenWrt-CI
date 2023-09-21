@@ -22,9 +22,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:      
-      - uses: shaowenchen/debugger-action@v2
-        name: debugger
-        timeout-minutes: 30
-        continue-on-error: true
+      - name: Start SSH session
+        uses: luchihoratiu/debug-via-ssh@main
         with:
-          ngrok_token: ${{ secrets.NGROK_TOKEN }}
+          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
+          SSH_PASS: ${{ secrets.SSH_PASS }}
